@@ -12,5 +12,4 @@
 	$module->provider('languageProvider', "language\\languageProvider");
 	
 	
-	
 ?>

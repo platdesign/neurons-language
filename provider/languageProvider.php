@@ -15,28 +15,26 @@ class languageProvider extends nrns\Provider {
 		$this->client 	= $client;
 		$this->cookie 	= $cookie;
 		$this->fs		= $fs;
-		
-		$nrns->on('before:init', function(){
-		
-			if( isset( $_GET['language'] ) ) {
-				
-				$langOffer = $_GET['language'];
-				
-			} elseif( $lang = $this->getLanguageCookie() ) {
-				
-				$langOffer = $lang;
-				
-			} elseif( $lang = $this->client->getLanguage() ) {
-				
-				$langOffer = $lang;
-				
-			} else {
-				$langOffer = $this->getDefault();
-			}
+	}
+	
+	public function start() {
+		if( isset( $_GET['language'] ) ) {
 			
-			$this->setActive($langOffer);
+			$langOffer = $_GET['language'];
 			
-		});
+		} elseif( $lang = $this->getLanguageCookie() ) {
+			
+			$langOffer = $lang;
+			
+		} elseif( $lang = $this->client->getLanguage() ) {
+			
+			$langOffer = $lang;
+			
+		} else {
+			$langOffer = $this->getDefault();
+		}
+		
+		$this->setActive($langOffer);
 	}
 	
 	public function setActive($lang) {
@@ -74,7 +72,7 @@ class languageProvider extends nrns\Provider {
 	}
 	
 	public function __tostring() {
-		return $this->getActive();
+		return (string) $this->getActive();
 	}
 	
 	
