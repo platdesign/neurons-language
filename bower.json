@@ -14,5 +14,9 @@
     "vendor",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies":{
+	  "neurons":"*",
+	  "neurons-fs":"*"
+  }
 }
