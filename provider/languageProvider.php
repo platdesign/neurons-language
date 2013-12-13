@@ -16,7 +16,7 @@ class languageProvider extends nrns\Provider {
 		$this->cookie 	= $cookie;
 		$this->fs		= $fs;
 		
-		$nrns->on('after:config', function(){
+		$nrns->on('init', function(){
 		
 			if( isset( $_GET['language'] ) ) {
 				
