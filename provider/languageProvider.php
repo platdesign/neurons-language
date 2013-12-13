@@ -88,6 +88,8 @@ class languageProvider extends nrns\Provider {
 		} else {
 			if( isset($this->translations[$key][$this->getDefault()]) ) {
 				return $this->translations[$key][$this->getDefault()];
+			}else{
+				return '[***Translate: '.$key.'***]';
 			}
 			
 		}
