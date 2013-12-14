@@ -9,7 +9,7 @@ class languageProvider extends nrns\Provider {
 	private $active;
 	private $supported=['de'];
 	private $translations=[];
-	
+	private $started = false;
 	
 	public function __construct($nrns, $client, $cookie, $fs) {
 		$this->client 	= $client;
@@ -17,7 +17,15 @@ class languageProvider extends nrns\Provider {
 		$this->fs		= $fs;
 	}
 	
-	public function start() {
+	public function getService() {
+		if(!$this->started) {
+			$this->start();
+		}
+		return $this;
+	}
+	
+	private function start() {
+		
 		if( isset( $_GET['language'] ) ) {
 			
 			$langOffer = $_GET['language'];
@@ -35,6 +43,7 @@ class languageProvider extends nrns\Provider {
 		}
 		
 		$this->setActive($langOffer);
+		$this->started = true;
 	}
 	
 	public function setActive($lang) {
@@ -74,6 +83,7 @@ class languageProvider extends nrns\Provider {
 	public function __tostring() {
 		return (string) $this->getActive();
 	}
+	
 	
 	
 	
