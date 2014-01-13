@@ -127,6 +127,11 @@ class languageProvider extends nrns\Provider {
 		$stmt = $pdo->prepare($query);
 		$stmt->execute();
 		$data = $stmt->fetchAll(\PDO::FETCH_CLASS);
+
+		foreach($data as $row) {
+			$this->register($row->key, $row);
+		}
+
 		$this->registerMultiple($data);
 	}
 	
