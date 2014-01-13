@@ -121,6 +121,14 @@ class languageProvider extends nrns\Provider {
 			$this->registerMultiple( $file->parseAs('JSON') );
 		}
 	}
+
+	public function registerFromMysqlTable($table, $dpo) {
+		$query = 'SELECT * FROM `'.$table.'`';
+		$stmt = $pdo->prepare($query);
+		$stmt->execute();
+		$data = $stmt->fetchAll(\PDO::FETCH_CLASS);
+		$this->registerMultiple($data);
+	}
 	
 }
 
