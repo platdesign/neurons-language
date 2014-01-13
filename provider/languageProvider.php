@@ -122,7 +122,7 @@ class languageProvider extends nrns\Provider {
 		}
 	}
 
-	public function registerFromMysqlTable($table, $dpo) {
+	public function registerFromMysqlTable($table, $pdo) {
 		$query = 'SELECT * FROM `'.$table.'`';
 		$stmt = $pdo->prepare($query);
 		$stmt->execute();
