@@ -66,7 +66,7 @@ class languageProvider extends nrns\Provider {
 	}
 	
 	public function setLanguageCookie($lang) {
-		$this->cookie->set('language', $lang, 3600*24);
+		$this->cookie->set('language', $lang, 3600*24, '/');
 	}
 	public function getLanguageCookie() {
 		return $this->cookie->get('language');
